@@ -1,81 +1,62 @@
-# 🏠 Advanced House Price Prediction System
+<div align="center">
+  <h1>🏠 Advanced House Price Prediction</h1>
+  <p><strong>XGBoost-powered real estate valuation system with 91% accuracy</strong></p>
+  
+  <img src="https://img.shields.io/badge/Python-3.9+-3776AB?logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/ML-XGBoost-FF6F00?logo=xgboost" alt="XGBoost">
+  <img src="https://img.shields.io/badge/Optimization-Optuna-394EFF" alt="Optuna">
+  <img src="https://img.shields.io/badge/Deployment-Gradio-FF4A4A" alt="Gradio">
+</div>
 
-```python
-"""
-Project: House Price Prediction Engine
-Technologies: Python, XGBoost, Optuna, Gradio
-Accuracy: R² 0.91 | RMSE $24,907
-"""
+<h2>🔧 Technical Stack</h2>
+<ul>
+  <li><strong>Core ML:</strong> XGBoost Regressor (Optuna-tuned hyperparameters)</li>
+  <li><strong>Feature Engineering:</strong> 80+ dimensions including:
+    <ul>
+      <li>Structural: Square footage, room counts, quality ratings</li>
+      <li>Temporal: Year built/remodeled</li>
+      <li>Geospatial: Neighborhood zoning</li>
+    </ul>
+  </li>
+  <li><strong>Key Libraries:</strong>
+    <code>xgboost==1.7.5</code>, 
+    <code>optuna==3.2.0</code>, 
+    <code>scikit-learn==1.2.2</code>,
+    <code>pandas==2.0.3</code>
+  </li>
+</ul>
 
-# =====================
-# CORE TECHNOLOGIES
-# =====================
-import xgboost as xgb          # Gradient Boosting Model
-import optuna                  # Hyperparameter Optimization
-import pandas as pd            # Data Processing (80+ features)
-import numpy as np             # Numerical Operations
-from sklearn import (          # Scikit-learn Ecosystem
-    preprocessing,
-    model_selection,
-    metrics
-)
-import gradio as gr            # Web Interface Deployment
+<h2>📊 Performance Metrics</h2>
+<table>
+  <tr>
+    <th>Metric</th>
+    <th>Score</th>
+  </tr>
+  <tr>
+    <td>RMSE</td>
+    <td>$24,907</td>
+  </tr>
+  <tr>
+    <td>R²</td>
+    <td>0.91</td>
+  </tr>
+  <tr>
+    <td>Training Time</td>
+    <td>2.8 mins (M1 Pro)</td>
+  </tr>
+</table>
 
-# =====================
-# KEY FEATURES ENGINEERED
-# =====================
-features = {
-    # Structural
-    'OverallQual': 'Rates overall material/finish',
-    'GrLivArea': 'Above grade living area sqft',
-    'GarageCars': 'Garage car capacity',
-    
-    # Location
-    'Neighborhood': 'Physical locations',
-    'MSZoning': 'General zoning classification',
-    
-    # Temporal
-    'YearBuilt': 'Original construction date',
-    'YearRemodAdd': 'Remodel date',
-    
-    # Additional
-    'TotalBsmtSF': 'Basement area',
-    '1stFlrSF': 'First floor square feet',
-    ... # 70+ other features
-}
+<h2>🚀 Deployment</h2>
+<pre><code class="language-bash"># Launch prediction interface
+pip install gradio==3.36.1
+</pre>
 
-# =====================
-# DEPLOYMENT ARCHITECTURE
-# =====================
-"""
-1. Data Pipeline:
-   - pd.read_csv() → sklearn.impute → pd.get_dummies()
-   
-2. Model Serving:
-   - joblib.load('model.pkl') → predict()
-   
-3. Web Interface:
-   - Gradio: Input form → Model API → Price prediction
-"""
-
-# =====================
-# HOW TO USE
-# =====================
-"""
-$ git clone https://github.com/swairariaz/House_price_prediction
-$ pip install -r requirements.txt
-$ python serve.py  # Launches Gradio interface at localhost:7860
-"""
-
-# =====================
-# DEPENDENCIES
-# =====================
-requirements = """
-xgboost==1.7.5
-optuna==3.2.0
-scikit-learn==1.2.2
-pandas==2.0.3
-gradio==3.36.1
-"""
-
-# Key Metrics: RMSE $24,907 | Training Time: 2.8 mins (M1 Pro)
+<h2>📂 Repository Structure</h2>
+<pre>
+house-price-prediction/
+├── data/                   # Raw datasets
+│   ├── train.csv           # 1460 training samples
+│   └── test.csv            # 1459 test samples
+├── main.ipynb              # Complete analysis notebook
+└── requirements.txt        # Dependency specifications
+</pre>
